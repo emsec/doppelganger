@@ -1,0 +1,48 @@
+Information: Updating graph... (UID-83)
+Warning: Design 'Top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : area
+Design : Top
+Version: E-2010.12-SP2
+Date   : Thu Feb 13 10:24:21 2020
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'Top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /usr/flow/designkits/synthesis/nangate_45nm/NangateopenCellLibrary_typical.db)
+
+Number of ports:                            8
+Number of nets:                         11420
+Number of cells:                        11216
+Number of combinational cells:          10165
+Number of sequential cells:              1048
+Number of macros:                           0
+Number of buf/inv:                       1766
+Number of references:                      37
+
+Combinational area:       11672.346029
+Noncombinational area:    5011.439831
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:          16683.785860
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area            Local cell area
+                                  -------------------  ----------------------------- 
+Hierarchical cell                 Absolute    Percent  Combi-      Noncombi-  Black
+                                  Total       Total    national    national   boxes   Design
+--------------------------------  ----------  -------  ----------  ---------  ------  --------------
+Top                               16684.3887    100.0  11548.0459  5011.4189  0.0000  Top
+inst_receiver/inst_receiver/inst_receiver/add_56    22.8760     0.1    22.8760    0.0000 0.0000 Top_DW01_inc_0
+inst_transmitter/inst_transmitter/inst_transmitter/add_45    22.8760     0.1    22.8760    0.0000 0.0000 Top_DW01_inc_1
+inst_trng/add_80                     78.7360      0.5     78.7360     0.0000  0.0000  Top_DW01_inc_2
+--------------------------------  ----------  -------  ----------  ---------  ------  --------------
+Total                                                  11672.5342  5011.4189  0.0000
+
+1

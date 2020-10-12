@@ -1,0 +1,43 @@
+Information: Updating graph... (UID-83)
+ 
+****************************************
+Report : area
+Design : FSM
+Version: E-2010.12-SP2
+Date   : Tue Jun 30 16:55:00 2020
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /usr/flow/designkits/synthesis/nangate_45nm/NangateopenCellLibrary_typical.db)
+
+Number of ports:                           20
+Number of nets:                            65
+Number of cells:                           51
+Number of combinational cells:             47
+Number of sequential cells:                 4
+Number of macros:                           0
+Number of buf/inv:                         10
+Number of references:                      15
+
+Combinational area:         44.688000
+Noncombinational area:      18.087999
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:            62.775999
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+FSM                                 62.7760    100.0   44.6880    18.0880  0.0000  FSM
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+Total                                                  44.6880    18.0880  0.0000
+
+1

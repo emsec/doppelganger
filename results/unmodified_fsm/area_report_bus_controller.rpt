@@ -1,0 +1,43 @@
+Information: Updating graph... (UID-83)
+ 
+****************************************
+Report : area
+Design : BusController
+Version: E-2010.12-SP2
+Date   : Tue Jun 30 16:41:48 2020
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /usr/flow/designkits/synthesis/nangate_45nm/NangateopenCellLibrary_typical.db)
+
+Number of ports:                           23
+Number of nets:                            57
+Number of cells:                           45
+Number of combinational cells:             42
+Number of sequential cells:                 3
+Number of macros:                           0
+Number of buf/inv:                          8
+Number of references:                      13
+
+Combinational area:         42.028000
+Noncombinational area:      13.566000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:            55.594000
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+BusController                       55.5940    100.0   42.0280    13.5660  0.0000  BusController
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+Total                                                  42.0280    13.5660  0.0000
+
+1

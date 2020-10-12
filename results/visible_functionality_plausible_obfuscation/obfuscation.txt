@@ -1,0 +1,188 @@
+trying greedy algorithm...
+greedy algorithm successful
+global const bits(4)           S_INIT = "0000";
+global const bits(4)     S_TRANSMIT_Y = "0001";
+global const bits(4)          S_XOR_P = "0011";
+global const bits(4)       S_CIPHER_P = "0111";
+global const bits(4)    S_TRANSMIT_IV = "1111";
+global const bits(4) S_CIPHER_ENCRYPT = "0010";
+global const bits(4)       S_CIPHER_K = "0100";
+global const bits(4)    S_GENERATE_IV = "0101";
+global const bits(4)   S_RECEIVE_CTRL = "0110";
+global const bits(4)    S_RECEIVE_KEY = "1000";
+global const bits(4)      S_RECEIVE_P = "1001";
+global const bits(4)      S_XOR_STORE = "1010";
+global const bits(4)          S_XOR_Y = "1011";
+
+Analysis of input:
+
+unchanged decodings:
+  is_S_INIT -> S_RECEIVE_CTRL
+  is_S_RECEIVE_CTRL & ctrl_receive_key -> S_RECEIVE_KEY
+  is_S_RECEIVE_CTRL & not ctrl_receive_key -> S_RECEIVE_P
+  is_S_RECEIVE_KEY -> S_GENERATE_IV
+  is_S_GENERATE_IV -> S_TRANSMIT_IV
+  is_S_TRANSMIT_IV -> S_RECEIVE_CTRL
+  is_S_XOR_P -> S_XOR_Y
+  is_S_XOR_Y -> S_XOR_STORE
+  is_S_CIPHER_P -> S_CIPHER_K
+  is_S_CIPHER_K -> S_CIPHER_ENCRYPT
+  is_S_TRANSMIT_Y -> S_RECEIVE_CTRL
+
+decodings with different output symbols:
+  hidden functionality                                 visible functionality
+  is_S_RECEIVE_P -> S_XOR_P                            is_S_RECEIVE_P -> S_CIPHER_P
+  is_S_XOR_STORE -> S_CIPHER_P                         is_S_XOR_STORE -> S_TRANSMIT_IV
+  is_S_CIPHER_ENCRYPT & cipher_DONE -> S_TRANSMIT_Y    is_S_CIPHER_ENCRYPT & cipher_DONE
+
+
+fsm_next(0) <=
+    (is_S_RECEIVE_CTRL and not ctrl_receive_key)
+    or (is_S_RECEIVE_KEY)
+    or (is_S_GENERATE_IV)
+    or (is_S_XOR_P)
+    or (is_S_RECEIVE_P)
+    or (is_S_CIPHER_ENCRYPT and cipher_DONE)
+    or (is_S_XOR_STORE)
+    ;
+
+fsm_next(1) <=
+    (is_S_INIT)
+    or (is_S_GENERATE_IV)
+    or (is_S_TRANSMIT_IV)
+    or (is_S_XOR_P)
+    or (is_S_XOR_Y)
+    or (is_S_CIPHER_K)
+    or (is_S_TRANSMIT_Y)
+    or (is_S_RECEIVE_P)
+    or (is_S_XOR_STORE)
+    or (is_S_CIPHER_ENCRYPT and cipher_DONE)  // ignore line to enable hidden functionali
+    ;
+
+fsm_next(2) <=
+    (is_S_INIT)
+    or (is_S_RECEIVE_KEY)
+    or (is_S_GENERATE_IV)
+    or (is_S_TRANSMIT_IV)
+    or (is_S_CIPHER_P)
+    or (is_S_TRANSMIT_Y)
+    or (is_S_XOR_STORE)
+    or (is_S_RECEIVE_P)  // ignore line to enable hidden functionality
+    ;
+
+fsm_next(3) <=
+    (is_S_RECEIVE_CTRL and ctrl_receive_key)
+    or (is_S_RECEIVE_CTRL and not ctrl_receive_key)
+    or (is_S_GENERATE_IV)
+    or (is_S_XOR_P)
+    or (is_S_XOR_Y)
+    or (is_S_XOR_STORE)  // ignore line to enable hidden functionality
+    ;
+
+
+##################################################
+##################################################
+##################################################
+##################################################
+
+trying greedy algorithm...
+greedy algorithm successful
+global const bits(4)      BUS_ID_NOBODY = "0000";
+global const bits(4)       BUS_ID_P_REG = "0001";
+global const bits(4)       BUS_ID_Y_REG = "0011";
+global const bits(4)      BUS_ID_CIPHER = "0010";
+global const bits(4)       BUS_ID_K_REG = "0100";
+global const bits(4)    BUS_ID_RECEIVER = "0101";
+global const bits(4) BUS_ID_TRANSMITTER = "0110";
+global const bits(4)        BUS_ID_TRNG = "0111";
+global const bits(4)         BUS_ID_XOR = "1000";
+
+Analysis of input:
+
+unchanged decodings:
+  is_S_RECEIVE_KEY & receiver_available -> BUS_ID_RECEIVER
+  is_S_GENERATE_IV & trng_available -> BUS_ID_TRNG
+  is_S_TRANSMIT_IV & transmitter_ready_for_data -> BUS_ID_K_REG
+  is_S_RECEIVE_P & receiver_available -> BUS_ID_RECEIVER
+  is_S_XOR_P -> BUS_ID_P_REG
+  is_S_XOR_Y -> BUS_ID_Y_REG
+  is_S_XOR_STORE -> BUS_ID_XOR
+  is_S_CIPHER_K -> BUS_ID_K_REG
+  is_S_CIPHER_ENCRYPT & cipher_done -> BUS_ID_CIPHER
+  is_S_TRANSMIT_Y & transmitter_ready_for_data -> BUS_ID_Y_REG
+
+decodings with different output symbols:
+  hidden functionality             visible functionality
+  is_S_CIPHER_P -> BUS_ID_P_REG    is_S_CIPHER_P -> BUS_ID_Y_REG
+
+
+bus_src(0) <=
+    (is_S_RECEIVE_KEY and receiver_available)
+    or (is_S_GENERATE_IV and trng_available)
+    or (is_S_RECEIVE_P and receiver_available)
+    or (is_S_XOR_P)
+    or (is_S_XOR_Y)
+    or (is_S_TRANSMIT_Y and transmitter_ready_for_data)
+    or (is_S_CIPHER_P)
+    ;
+
+bus_src(1) <=
+    (is_S_GENERATE_IV and trng_available)
+    or (is_S_XOR_Y)
+    or (is_S_CIPHER_ENCRYPT and cipher_done)
+    or (is_S_TRANSMIT_Y and transmitter_ready_for_data)
+    or (is_S_CIPHER_P)  // ignore line to enable hidden functionality
+    ;
+
+bus_src(2) <=
+    (is_S_RECEIVE_KEY and receiver_available)
+    or (is_S_GENERATE_IV and trng_available)
+    or (is_S_TRANSMIT_IV and transmitter_ready_for_data)
+    or (is_S_RECEIVE_P and receiver_available)
+    or (is_S_CIPHER_K)
+    ;
+
+bus_src(3) <=
+    (is_S_XOR_STORE)
+    ;
+
+Analysis of input:
+
+unchanged decodings:
+  is_S_RECEIVE_KEY & receiver_available -> BUS_ID_K_REG
+  is_S_GENERATE_IV & trng_available -> BUS_ID_CIPHER
+  is_S_TRANSMIT_IV & transmitter_ready_for_data -> BUS_ID_CIPHER
+  is_S_RECEIVE_P & receiver_available -> BUS_ID_P_REG
+  is_S_XOR_P -> BUS_ID_XOR
+  is_S_XOR_Y -> BUS_ID_XOR
+  is_S_XOR_STORE -> BUS_ID_P_REG
+  is_S_CIPHER_P -> BUS_ID_CIPHER
+  is_S_CIPHER_K -> BUS_ID_CIPHER
+  is_S_CIPHER_ENCRYPT & cipher_done -> BUS_ID_Y_REG
+  is_S_TRANSMIT_Y & transmitter_ready_for_data -> BUS_ID_TRANSMITTER
+
+
+bus_dst(0) <=
+    (is_S_RECEIVE_P and receiver_available)
+    or (is_S_XOR_STORE)
+    or (is_S_CIPHER_ENCRYPT and cipher_done)
+    ;
+
+bus_dst(1) <=
+    (is_S_GENERATE_IV and trng_available)
+    or (is_S_TRANSMIT_IV and transmitter_ready_for_data)
+    or (is_S_CIPHER_P)
+    or (is_S_CIPHER_K)
+    or (is_S_CIPHER_ENCRYPT and cipher_done)
+    or (is_S_TRANSMIT_Y and transmitter_ready_for_data)
+    ;
+
+bus_dst(2) <=
+    (is_S_RECEIVE_KEY and receiver_available)
+    or (is_S_TRANSMIT_Y and transmitter_ready_for_data)
+    ;
+
+bus_dst(3) <=
+    (is_S_XOR_P)
+    or (is_S_XOR_Y)
+    ;
