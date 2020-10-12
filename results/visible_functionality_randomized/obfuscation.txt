@@ -1,18 +1,18 @@
 trying greedy algorithm...
 greedy algorithm successful
-global const bits(4)           S_INIT = "0000";
-global const bits(4)    S_TRANSMIT_IV = "0001";
-global const bits(4)       S_CIPHER_K = "0011";
-global const bits(4)    S_RECEIVE_KEY = "0111";
-global const bits(4)   S_RECEIVE_CTRL = "0010";
-global const bits(4)          S_XOR_P = "0100";
-global const bits(4) S_CIPHER_ENCRYPT = "1000";
-global const bits(4)       S_CIPHER_P = "1111";
-global const bits(4)          S_XOR_Y = "0110";
-global const bits(4)     S_TRANSMIT_Y = "1001";
-global const bits(4)    S_GENERATE_IV = "0101";
-global const bits(4)      S_RECEIVE_P = "1010";
-global const bits(4)      S_XOR_STORE = "1011";
+signal            S_INIT : std_logic_vector(3 downto 0) = "0000";
+signal     S_TRANSMIT_IV : std_logic_vector(3 downto 0) = "0001";
+signal        S_CIPHER_K : std_logic_vector(3 downto 0) = "0011";
+signal     S_RECEIVE_KEY : std_logic_vector(3 downto 0) = "0111";
+signal    S_RECEIVE_CTRL : std_logic_vector(3 downto 0) = "0010";
+signal           S_XOR_P : std_logic_vector(3 downto 0) = "0100";
+signal  S_CIPHER_ENCRYPT : std_logic_vector(3 downto 0) = "1000";
+signal        S_CIPHER_P : std_logic_vector(3 downto 0) = "1111";
+signal           S_XOR_Y : std_logic_vector(3 downto 0) = "0110";
+signal      S_TRANSMIT_Y : std_logic_vector(3 downto 0) = "1001";
+signal     S_GENERATE_IV : std_logic_vector(3 downto 0) = "0101";
+signal       S_RECEIVE_P : std_logic_vector(3 downto 0) = "1010";
+signal       S_XOR_STORE : std_logic_vector(3 downto 0) = "1011";
 
 Analysis of input:
 
@@ -81,15 +81,15 @@ fsm_next(3) <=
     ;
 
 
-global const bits(4)      BUS_ID_NOBODY = "0000";
-global const bits(4)    BUS_ID_RECEIVER = "0001";
-global const bits(4) BUS_ID_TRANSMITTER = "0010";
-global const bits(4)       BUS_ID_P_REG = "0011";
-global const bits(4)       BUS_ID_Y_REG = "0100";
-global const bits(4)       BUS_ID_K_REG = "0101";
-global const bits(4)        BUS_ID_TRNG = "0110";
-global const bits(4)         BUS_ID_XOR = "0111";
-global const bits(4)      BUS_ID_CIPHER = "1000";
+signal       BUS_ID_NOBODY : std_logic_vector(3 downto 0) = "0000";
+signal     BUS_ID_RECEIVER : std_logic_vector(3 downto 0) = "0001";
+signal  BUS_ID_TRANSMITTER : std_logic_vector(3 downto 0) = "0010";
+signal        BUS_ID_P_REG : std_logic_vector(3 downto 0) = "0011";
+signal        BUS_ID_Y_REG : std_logic_vector(3 downto 0) = "0100";
+signal        BUS_ID_K_REG : std_logic_vector(3 downto 0) = "0101";
+signal         BUS_ID_TRNG : std_logic_vector(3 downto 0) = "0110";
+signal          BUS_ID_XOR : std_logic_vector(3 downto 0) = "0111";
+signal       BUS_ID_CIPHER : std_logic_vector(3 downto 0) = "1000";
 
 Analysis of input:
 

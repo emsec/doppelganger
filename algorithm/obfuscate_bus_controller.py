@@ -144,7 +144,7 @@ encodings = doppelganger.generate_encodings(symbols, fixed_encodings, [(hidden_f
 bitlength = (len(encodings) - 1).bit_length()
 fill = max(len(s) for s in symbols)
 for x in encodings:
-    print("global const bits({}) {} = \"{}\";".format(bitlength, " "*(fill-len(x)) + x, bin(encodings[x])[2:].zfill(bitlength)))
+    print("signal {} : std_logic_vector({} downto 0) = \"{}\";".format(" "*(fill-len(x)) + x, bitlength-1, bin(encodings[x])[2:].zfill(bitlength)))
 print("")
 
 doppelganger.generate_functions(encodings, hidden_functionality_src, visible_functionality_src, "bus_src")
