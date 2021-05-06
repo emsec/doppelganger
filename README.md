@@ -25,7 +25,20 @@ You can comment in/out the various configurations in both files to generate the 
 
 If you use Doppelganger in an academic context, please cite our paper using the reference below:
 ```latex
-@article {
-    todo
+@article{DBLP:journals/tches/HoffmannP21,
+  author    = {Max Hoffmann and
+               Christof Paar},
+  title     = {Doppelganger Obfuscation - Exploring theDefensive and Offensive Aspects
+               of Hardware Camouflaging},
+  journal   = {{IACR} Trans. Cryptogr. Hardw. Embed. Syst.},
+  volume    = {2021},
+  number    = {1},
+  pages     = {82--108},
+  year      = {2021},
+  url       = {https://doi.org/10.46586/tches.v2021.i1.82-108},
+  doi       = {10.46586/tches.v2021.i1.82-108},
+  timestamp = {Fri, 29 Jan 2021 16:46:53 +0100},
+  biburl    = {https://dblp.org/rec/journals/tches/HoffmannP21.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
 }
 ```
